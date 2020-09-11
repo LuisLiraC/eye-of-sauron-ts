@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node ./dist/index.js",
     "dev": "nodemon --exec ts-node -- ./src/index.ts"
   },
   "keywords": [],
@@ -12,6 +14,7 @@
   "devDependencies": {
     "@types/lowdb": "^1.0.9",
     "@types/node": "^14.10.0",
+    "@types/ws": "^7.2.6",
     "nodemon": "^2.0.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
