@@ -71,7 +71,7 @@ class BotDispatcher extends Dispatcher {
         .get('reactions')
         .value()
 
-      if (registeredUsers.includes(user.id)) return
+      if (registeredUsers?.includes(user.id)) return
 
       await this.db.get('raffles')
         .find(raffle)
