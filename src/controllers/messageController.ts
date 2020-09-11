@@ -11,7 +11,7 @@ function messageController(message: Message) {
   
   if (command && isUd) {
     commandManager.executeCommand(message, command)
-  } else if (!command && isUd) {
+  } else if (message.content.startsWith('!') && isUd) {
     commandManager.commandNotFound(message)
   } else if (!isUd && command) {
     const botDispatcher = new BotDispatcher()

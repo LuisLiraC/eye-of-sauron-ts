@@ -107,10 +107,7 @@ class AdminDispatcher extends Dispatcher {
         const randomNum = Math.floor(Math.random() * users.length)
         const winner = users[randomNum]
         const emoji = getEmojiById(message, this.emojis.xmaxCheems)
-
         const channel = getChannelById(message, this.channels.undefinedDevsBots)
-
-        console.log(channel)
 
         channel instanceof TextChannel
           && channel.send(`Felicidades <@${winner}> ganaste la rifa del día hoy <:xmaxcheems:${emoji}>`) 
