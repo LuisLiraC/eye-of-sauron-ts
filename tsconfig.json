@@ -67,6 +67,7 @@
     "node_modules"  /* exclude everything in  node_modules */
   ],
   "include" : [
-    "src/**/*.ts"   /* Include every ts file in source folder */
+    "src/**/*.ts",   /* Include every ts file in source folder */
+    "src/lib/raffles/db.json"
   ],
 }
