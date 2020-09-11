@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && node ./dist/index.js",
+    "tsc": "tsc",
+    "start": "node ./dist/index.js",
+    "postinstall": "npm run tsc",
     "dev": "nodemon --exec ts-node -- ./src/index.ts"
   },
   "keywords": [],
