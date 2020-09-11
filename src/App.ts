@@ -18,7 +18,7 @@ class App {
   }
 
   private initialize(): void {
-    this.client.on('ready', () => console.log('Bot running'))
+    this.client.on('ready', () => console.log('Sauron is watching everything 😈'))
     this.client.on('guildMemberAdd', newMemberController)
     this.client.on('message', messageController)
     this.client.on('messageReactionAdd', addedReactionController)
