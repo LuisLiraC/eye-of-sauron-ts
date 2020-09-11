@@ -1,0 +1,24 @@
+{
+  "name": "discord-bot-undefineddevs-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node -- ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "LuisLiraC <luisliradev@gmail.com> (https://luislira.xyz/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lowdb": "^1.0.9",
+    "@types/node": "^14.10.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "lowdb": "^1.0.0"
+  }
+}
