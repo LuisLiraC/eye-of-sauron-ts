@@ -1,6 +1,6 @@
 import Dispatcher from "./Dispatcher";
 import { GuildMember, PartialGuildMember, MessageReaction, User, Message, TextChannel, Role, UserResolvable } from "discord.js";
-import { getChannelById, getEmojiById, getGuildMemberByMessage } from "../utils/DiscordUtils";
+import { getChannelById, getEmojiById, getGuildMemberByMessage, createMessageEmbed } from "../utils/DiscordUtils";
 import Raffle from '../models/Raffle'
 
 class BotDispatcher extends Dispatcher {
@@ -13,8 +13,19 @@ class BotDispatcher extends Dispatcher {
       const emoji = getEmojiById(member, this.emojis.linkPepe)
       const rulesChannel = getChannelById(member, this.channels.rulesChannel)?.toString()
 
-      channel instanceof TextChannel
-        && channel.send(`¡Hola <@${member}>! Bienvenvid@ a la comunidad de Undefined Devs <:linkpepe:${emoji}>\nLee nuestro canal de ${rulesChannel} hasta el final y sigue las instrucciones para poder entrar a todos los canales.`)
+      const messageEmbed = createMessageEmbed({
+        title: `¡Bienvenid@!`,
+        description: `Gracias <@${member}> por unirte a la comunidad de Undefined Devs <:linkpepe:${emoji}>\n\nLee nuestro canal de ${rulesChannel} hasta el final y sigue las instrucciones para poder entrar a todos los canales.`,
+        footer: {
+          text: 'Atte: Comunidad de UndefinedDevs'
+        },
+        color: '#0761E2',
+        thumbnail: {
+          url: 'https://i.imgur.com/r3KnljE.png'
+        },
+      })
+
+      channel instanceof TextChannel && channel.send(messageEmbed)
 
     } catch (error) {
       console.log(error)
