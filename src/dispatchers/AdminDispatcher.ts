@@ -9,7 +9,7 @@ class AdminDispatcher extends Dispatcher {
     try {
       const result = this.commands.map(c => (
         `▶ ${c.id} --> ${c.description}\n`
-      )).join()
+      )).join('')
 
       const channel = getChannelById(message, this.channels.undefinedDevsBots)
       const member = getGuildMemberByMessage(message)

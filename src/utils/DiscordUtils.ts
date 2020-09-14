@@ -18,11 +18,11 @@ export function getEmojiById(message: Message | GuildMember | PartialGuildMember
 
 export function createMessageEmbed(options: MessageEmbedOptions): MessageEmbed {
   const messageEmbed = new MessageEmbed()
-    .setColor(options.color || '')
+    .setColor(options.color || '#0761E2')
     .setTitle(options.title)
     .setDescription(options.description)
     .setFooter(options.footer?.text)
-    .setThumbnail(options.thumbnail?.url || '')
+    .setThumbnail(options.thumbnail?.url || 'https://i.imgur.com/r3KnljE.png')
 
   return messageEmbed
 }
