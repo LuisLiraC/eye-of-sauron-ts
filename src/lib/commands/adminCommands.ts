@@ -60,6 +60,14 @@ const adminCommands: Command[] = [
       dispatcher.meeting(message)
     },
   },
+  {
+    id: "!reply",
+    description: "",
+    type: CommandType.ADMIN,
+    exec(dispatcher: AdminDispatcher, message: Message) {
+      dispatcher.reply(message)
+    }
+  }
 ]
 
 export default adminCommands

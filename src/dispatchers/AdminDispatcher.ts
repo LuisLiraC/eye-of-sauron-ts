@@ -134,6 +134,27 @@ class AdminDispatcher extends Dispatcher {
       console.log(error)
     }
   }
+
+  async reply(message: Message) {
+    try {      
+      const haveIds = message.content.match(/[0-9]{18,}/g)
+      const messageReply = message.content.replace(/^!reply\s+https:\/\/discordapp.com\/channels\/[0-9]{18,}\/[0-9]{18,}\/[0-9]{18,}\s+(.*)$/, "$1")
+
+      if (!haveIds) return
+
+      if (haveIds.length > 1) {
+        const [, channelId, messageId] = haveIds
+        const channel = await getChannelById(message, channelId)?.fetch()
+        
+        if (channel instanceof TextChannel) {
+          const messageToReply = await channel.messages.fetch(messageId)
+          messageToReply.reply(messageReply)
+        }
+      } 
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 export default AdminDispatcher
