@@ -17,6 +17,19 @@ class StupidDispatcher extends Dispatcher {
     }
   }
 
+  cobraKai(message: Message) {
+    try {
+      const channel = getChannelById(message, this.channels.general)
+      // const franId = this.uds.find(ud => ud.name === 'Frandeveloper')?.id
+
+      channel instanceof TextChannel
+        && channel.send(`No es karate, es cobra kai!! 🐍 🐍 🐍`)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   love(message: Message) {
     try {
       const channel = getChannelById(message, this.channels.generalBots)

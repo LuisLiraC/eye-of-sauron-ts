@@ -82,7 +82,7 @@ class AdminDispatcher extends Dispatcher {
         .find(raffle)
         .value()
 
-      if(!exists) {
+      if (!exists) {
         raffle.reactions = []
 
         await this.db.get('raffles')
@@ -98,7 +98,7 @@ class AdminDispatcher extends Dispatcher {
     try {
       const raffle = await this.validateRaffle(message)
 
-      if(raffle) {
+      if (raffle) {
         const users = this.db.get('raffles')
           .find(raffle)
           .get('reactions')
@@ -110,7 +110,7 @@ class AdminDispatcher extends Dispatcher {
         const channel = getChannelById(message, this.channels.undefinedDevsBots)
 
         channel instanceof TextChannel
-          && channel.send(`Felicidades <@${winner}> ganaste la rifa del día hoy <:xmaxcheems:${emoji}>`) 
+          && channel.send(`Felicidades <@${winner}> ganaste la rifa del día hoy <:xmaxcheems:${emoji}>`)
       }
     } catch (error) {
       console.log(error)
@@ -129,14 +129,14 @@ class AdminDispatcher extends Dispatcher {
         const result = users.map(id => ` <@${id}>`).join()
         message.reply(`Particiantes: ${result}`)
       }
-      
+
     } catch (error) {
       console.log(error)
     }
   }
 
   async reply(message: Message) {
-    try {      
+    try {
       const haveIds = message.content.match(/[0-9]{18,}/g)
       const messageReply = message.content.replace(/^!reply\s+https:\/\/discordapp.com\/channels\/[0-9]{18,}\/[0-9]{18,}\/[0-9]{18,}\s+(.*)$/, "$1")
 
@@ -145,12 +145,12 @@ class AdminDispatcher extends Dispatcher {
       if (haveIds.length > 1) {
         const [, channelId, messageId] = haveIds
         const channel = await getChannelById(message, channelId)?.fetch()
-        
+
         if (channel instanceof TextChannel) {
           const messageToReply = await channel.messages.fetch(messageId)
           messageToReply.reply(messageReply)
         }
-      } 
+      }
     } catch (error) {
       console.log(error)
     }
