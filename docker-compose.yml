@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+  eye_of_sauron:
+    container_name: eye_of_sauron
+    restart: on-failure:3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/home/app
+    stdin_open: true
+    tty: true
+    environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+    #command: npm install 
