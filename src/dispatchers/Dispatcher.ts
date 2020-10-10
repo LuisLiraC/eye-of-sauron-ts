@@ -47,7 +47,7 @@ abstract class Dispatcher {
       const haveValidId = message.content.match(/[0-9]{18,}/g)
 
       if (haveValidId) {
-        const [messageId] = haveValidId
+        const [,,messageId] = haveValidId
         const isRaffle = await this.isRaffle(messageId)
         return isRaffle
       }
