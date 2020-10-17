@@ -115,7 +115,7 @@ class BotDispatcher extends Dispatcher {
   }
 
   isInvalidLink(content: string): boolean {
-    const result = content.match(/youtube|twitch|youtu.be/)
+    const result = content.match(/https:\/\/youtube|twitch|youtu.be/)
     return result == undefined || result.length == 0
       ? true
       : false

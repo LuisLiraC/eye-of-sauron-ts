@@ -8,8 +8,10 @@ function messageController(message: Message) {
   const commandManager = new CommandManager()
   const command = message.content.startsWith('!') && commandManager.getCommand(message)
 
-  !command && commandManager.commandNotFound(message)
-  command && commandManager.executeCommand(message, command)
+  if (message.content.startsWith('!')) {
+    !command && commandManager.commandNotFound(message)
+    command && commandManager.executeCommand(message, command)
+  }
 
   new BotDispatcher().processMessage(message)
 }
