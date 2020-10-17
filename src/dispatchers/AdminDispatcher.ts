@@ -27,10 +27,10 @@ class AdminDispatcher extends Dispatcher {
   description(message: Message) {
     try {
       const participants = message.mentions.users.array()
-      let result = `En este #UndefinedLive estaremos hablando sobre [insertar descripción del tema]\n\nSi te gustan estos lives no olvides compartir y seguirnos en nuestras redes 😁👇🏼\n\nParticipantes:\n`
+      let result = `En este #UndefinedLive estaremos hablando sobre [insertar descripción del tema]\n\nSi te gustan estos lives no olvides compartir y seguirnos en nuestras redes.\n\nParticipantes:\n`
 
       participants.forEach(p => this.uds.find(ud => ud.id === p.id
-        ? result += `👉 ${ud.name}:\n<${ud.youtube}>\n<${ud.twitter}>\n`
+        ? result += `${ud.name}:\n<${ud.youtube}>\n<${ud.twitter}>\n`
         : ''
       ))
 

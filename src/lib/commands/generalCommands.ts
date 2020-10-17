@@ -1,12 +1,12 @@
-import Command from "../../models/Command";
-import CommandType from "../../enums/CommandType";
-import { Message } from "discord.js";
-import GeneralDispatcher from "../../dispatchers/GeneralDispatcher";
+import Command from '../../models/Command'
+import CommandType from '../../enums/CommandType'
+import { Message } from 'discord.js'
+import GeneralDispatcher from '../../dispatchers/GeneralDispatcher'
 
 const generalCommands: Command[] = [
   {
-    id: "!help",
-    description: "description",
+    id: '!help',
+    description: 'Muestra los comandos',
     type: CommandType.GENERAL,
     exec(dispatcher: GeneralDispatcher, message: Message) {
       dispatcher.help(message)
@@ -14,7 +14,7 @@ const generalCommands: Command[] = [
   },
   {
     id: '!q',
-    description: 'Send a randomn quote',
+    description: 'Responder con una frase aleatoria',
     type: CommandType.GENERAL,
     exec(disptacher: GeneralDispatcher, message: Message) {
       disptacher.randomQuote(message)
