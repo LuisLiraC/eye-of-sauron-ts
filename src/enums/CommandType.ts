@@ -1,6 +1,7 @@
 enum CommandType {
   ADMIN,
-  STUPID
+  STUPID,
+  GENERAL
 }
 
 export default CommandType

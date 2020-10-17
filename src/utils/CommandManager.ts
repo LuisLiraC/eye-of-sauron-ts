@@ -5,6 +5,7 @@ import commands from '../lib/commands'
 import AdminDispatcher from "../dispatchers/AdminDispatcher"
 import StupidDispatcher from "../dispatchers/StupidDispatcher"
 import { getGuildMemberByMessage } from "./DiscordUtils"
+import GeneralDispatcher from "../dispatchers/GeneralDispatcher"
 
 class CommandManager {
   private commands: Command[] = commands
@@ -20,15 +21,18 @@ class CommandManager {
   }
 
   executeCommand(message: Message, command: Command): void {
+    const isUd = this.isUndefined(message)
+    
     switch (command.type) {
       case CommandType.ADMIN:
-        command.exec(new AdminDispatcher(), message)
+        isUd && command.exec(new AdminDispatcher(), message)
         break
       case CommandType.STUPID:
-        command.exec(new StupidDispatcher(), message)
+        isUd && command.exec(new StupidDispatcher(), message)
         break
-      default:
-        this.commandNotFound(message)
+      case CommandType.GENERAL:
+        command.exec(new GeneralDispatcher(), message)
+        break
     }
   }
 
@@ -40,7 +44,7 @@ class CommandManager {
     }
   }
 
-  isUndefined(message: Message): boolean | void {
+  isUndefined(message: Message): boolean {
     try {
       const user = getGuildMemberByMessage(message)
       if (!user)
@@ -49,9 +53,11 @@ class CommandManager {
       const roles = message.member?.roles.cache.map(r => r.name.toLowerCase())
       if (roles?.some((r: string) => r.toLowerCase().includes('undefined')))
         return true
-
+      else 
+        return false
     } catch (error) {
       console.log(error)
+      return false
     }
   }
 

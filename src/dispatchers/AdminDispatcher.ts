@@ -5,23 +5,6 @@ import Raffle from '../models/Raffle'
 
 class AdminDispatcher extends Dispatcher {
 
-  help(message: Message) {
-    try {
-      const result = this.commands.map(c => (
-        `▶ ${c.id} --> ${c.description}\n`
-      )).join('')
-
-      const channel = getChannelById(message, this.channels.undefinedDevsBots)
-      const member = getGuildMemberByMessage(message)
-
-      channel instanceof TextChannel
-        && channel.send(`<@${member}> \`\`\`Lista de comandos:\n${result}\`\`\``)
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   rules(message: Message) {
     try {
       const user = message.mentions.users.first()
