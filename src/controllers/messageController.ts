@@ -1,4 +1,4 @@
-import { Message } from "discord.js"
+import { Message, TextChannel } from "discord.js"
 import CommandManager from "../utils/CommandManager"
 import BotDispatcher from "../dispatchers/BotDispatcher"
 
@@ -6,6 +6,7 @@ function messageController(message: Message) {
   if (!message.guild || message.author.bot) return
 
   const commandManager = new CommandManager()
+  const botDispatcher = new BotDispatcher()
   const command = message.content.startsWith('!') && commandManager.getCommand(message)
   const isUd = commandManager.isUndefined(message)
   
@@ -14,9 +15,10 @@ function messageController(message: Message) {
   } else if (message.content.startsWith('!') && isUd) {
     commandManager.commandNotFound(message)
   } else if (!isUd && command) {
-    const botDispatcher = new BotDispatcher()
     botDispatcher.hijole(message)
   }
+
+  botDispatcher.processMessage(message)
 }
 
 export default messageController

@@ -5,7 +5,8 @@ const channels = {
   organization: '738997872594518017',
   moderation: '735244606215553125',
   welcome: '726134324746911786',
-  general: '724813649071308831'
+  general: '724813649071308831',
+  live: '725530527444107374'
 }
 
 export default channels

@@ -2,6 +2,7 @@ import Dispatcher from "./Dispatcher";
 import { GuildMember, PartialGuildMember, MessageReaction, User, Message, TextChannel, Role, UserResolvable } from "discord.js";
 import { getChannelById, getEmojiById, getGuildMemberByMessage, createMessageEmbed } from "../utils/DiscordUtils";
 import Raffle from '../models/Raffle'
+import messages from "../lib/messages";
 
 class BotDispatcher extends Dispatcher {
   welcome(member: GuildMember | PartialGuildMember) {
@@ -101,6 +102,34 @@ class BotDispatcher extends Dispatcher {
       const member = getGuildMemberByMessage(message)
       channel instanceof TextChannel
         && channel.send(`<@${member}>`, { files: ['https://i.pinimg.com/564x/e8/17/80/e8178017c48860752523cc080af84d57.jpg'] })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  processMessage(message: Message) {
+    try {
+      message.channel.id === this.channels.live && this.isInvalidLink(message.content) && this.liveWarning(message)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  isInvalidLink(content: string): boolean {
+    const result = content.match(/youtube|twitch|youtu.be/)
+    return result == undefined || result.length == 0
+      ? true
+      : false
+  }
+
+  liveWarning(message: Message) {
+    try {      
+      message.delete()
+      const member = getGuildMemberByMessage(message)
+      const channel = getChannelById(message, this.channels.generalBots)
+      const liveChannel = getChannelById(message, this.channels.live)
+      channel instanceof TextChannel 
+        && channel.send(`<@${member}>, por favor usa el canal de <#${liveChannel}> de la forma correcta. Comparte el link directo a la transmisión.`)
     } catch (error) {
       console.log(error)
     }
