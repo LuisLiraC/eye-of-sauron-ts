@@ -67,6 +67,14 @@ const adminCommands: Command[] = [
     exec(dispatcher: AdminDispatcher, message: Message) {
       dispatcher.reply(message)
     }
+  },
+  {
+    id: '!st',
+    description: '',
+    type: CommandType.ADMIN,
+    exec(dispatcher: AdminDispatcher, message: Message) {
+      dispatcher.sauronTalk(message)
+    }
   }
 ]
 

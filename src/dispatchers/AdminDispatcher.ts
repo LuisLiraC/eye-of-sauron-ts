@@ -155,6 +155,17 @@ class AdminDispatcher extends Dispatcher {
       console.log(error)
     }
   }
+
+  sauronTalk(message: Message) {
+    try {
+      const channel = message.mentions.channels.first()
+      const msg = message.content.replace(`!st <#${channel}>`, '').trim()
+      if (channel == undefined || msg === '') return
+      channel instanceof TextChannel && channel.send(msg)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 export default AdminDispatcher
