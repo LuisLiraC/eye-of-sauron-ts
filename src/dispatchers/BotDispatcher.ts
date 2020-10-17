@@ -2,7 +2,6 @@ import Dispatcher from "./Dispatcher";
 import { GuildMember, PartialGuildMember, MessageReaction, User, Message, TextChannel, Role, UserResolvable } from "discord.js";
 import { getChannelById, getEmojiById, getGuildMemberByMessage, createMessageEmbed } from "../utils/DiscordUtils";
 import Raffle from '../models/Raffle'
-import messages from "../lib/messages";
 
 class BotDispatcher extends Dispatcher {
   welcome(member: GuildMember | PartialGuildMember) {
