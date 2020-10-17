@@ -1,4 +1,4 @@
-import { Message, TextChannel } from "discord.js"
+import { Message } from "discord.js"
 import CommandManager from "../utils/CommandManager"
 import BotDispatcher from "../dispatchers/BotDispatcher"
 
@@ -9,6 +9,11 @@ function messageController(message: Message) {
   const botDispatcher = new BotDispatcher()
   const command = message.content.startsWith('!') && commandManager.getCommand(message)
   const isUd = commandManager.isUndefined(message)
+
+  if (command && message.content === '!q') {
+    commandManager.executeCommand(message, command)
+    return
+  }
   
   if (command && isUd) {
     commandManager.executeCommand(message, command)

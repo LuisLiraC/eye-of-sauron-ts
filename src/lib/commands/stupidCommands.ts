@@ -27,6 +27,14 @@ const stupidCommands: Command[] = [
     exec(dispatcher: StupidDispatcher, message: Message) {
       dispatcher.cobraKai(message)
     },
+  },
+  {
+    id: "!q",
+    description: "Send a random quote",
+    type: CommandType.STUPID,
+    exec(dispatcher: StupidDispatcher, message: Message) {
+      dispatcher.randomQuote(message)
+    }
   }
 ]
 
