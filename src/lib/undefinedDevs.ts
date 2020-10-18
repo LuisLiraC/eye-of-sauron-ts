@@ -70,7 +70,7 @@ const undefinedDevs: UndefinedDev[] = [
   {
     id: '266292231869038593',
     name: 'Daniel Esteves',
-    youtube: 'https://www.youtube.com/user/stormshadowag3',
+    youtube: 'https://www.youtube.com/c/danesteves',
     twitter: 'https://twitter.com/danestves'
   }
 ]
