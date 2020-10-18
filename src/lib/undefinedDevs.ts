@@ -1,4 +1,4 @@
-import UndefinedDev from "../../models/UndefinedDev"
+import UndefinedDev from "../models/UndefinedDev"
 
 const undefinedDevs: UndefinedDev[] = [
   {
