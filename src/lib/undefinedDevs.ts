@@ -52,7 +52,7 @@ const undefinedDevs: UndefinedDev[] = [
   {
     id: '377716991873777666',
     name: 'Alex Camacho',
-    youtube: '',
+    youtube: 'https://www.youtube.com/channel/UCL9JkO8k42Rn8ldVL8XCIpw',
     twitter: 'https://twitter.com/alexcamachogz'
   },
   {
@@ -72,6 +72,12 @@ const undefinedDevs: UndefinedDev[] = [
     name: 'Daniel Esteves',
     youtube: 'https://www.youtube.com/c/danesteves',
     twitter: 'https://twitter.com/danestves'
+  },
+  {
+    id: '80865691464368128',
+    name: 'Manuel Ojeda',
+    youtube: 'https://www.youtube.com/channel/UCYVVxkcLPxqPoLWumnF2qjw',
+    twitter: 'https://twitter.com/darkjeda'
   }
 ]
 
