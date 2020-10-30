@@ -115,7 +115,7 @@ class BotDispatcher extends Dispatcher {
   }
 
   isInvalidLink(content: string): boolean {
-    const result = content.match(/https:\/\/(www)?\.?(youtube\.com|twitch\.tv|youtu\.be)/)
+    const result = content.match(/https:\/\/(www)?\.?(youtube\.com|twitch\.tv|instagram\.com|fb\.com|facebook\.com|youtu\.be)/)
     return result == undefined || result.length == 0
       ? true
       : false
@@ -128,7 +128,7 @@ class BotDispatcher extends Dispatcher {
       const channel = getChannelById(message, this.channels.generalBots)
       const liveChannel = getChannelById(message, this.channels.live)
       channel instanceof TextChannel 
-        && channel.send(`<@${member}>, por favor usa el canal de <#${liveChannel}> de la forma correcta. Comparte el link directo a la transmisión de YouTube o Twitch.`)
+        && channel.send(`<@${member}>, por favor usa el canal de <#${liveChannel}> de la forma correcta. Comparte el link directo a la transmisión de YouTube | Twitch | Instagram | Facebook.`)
     } catch (error) {
       console.log(error)
     }
