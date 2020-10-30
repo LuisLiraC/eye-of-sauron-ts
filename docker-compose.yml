@@ -12,4 +12,4 @@ services:
     tty: true
     environment:
       DISCORD_TOKEN: ${DISCORD_TOKEN}
-    #command: npm install 
+    command: sh run_project.sh
