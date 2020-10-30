@@ -39,7 +39,7 @@ class StupidDispatcher extends Dispatcher {
           const channel = getChannelById(message, this.channels.general)
 
           channel instanceof TextChannel
-            && channel.send(`<@${member}> Hemos eliminado tu publicación por favor lee las reglas...`)
+            && channel.send(`<@${member}> Se ha eliminado tu publicación por favor lee las reglas...`)
         }
       }
     } catch (error) {
