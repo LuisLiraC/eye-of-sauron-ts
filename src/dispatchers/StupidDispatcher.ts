@@ -30,6 +30,19 @@ class StupidDispatcher extends Dispatcher {
     }
   }
 
+  getToWorkCris(message: Message) {
+    try {
+      const channel = getChannelById(message, this.channels.undefinedDevsBots)
+      const crisId = this.uds.find(ud => ud.name === 'Cristopher PS')?.id
+      
+      channel instanceof TextChannel
+        && channel.send(`Ya ponte a jalar <@${crisId}>`)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   sendAtentionCall(message: Message) {
     try {
       const user = message.mentions.users.first()

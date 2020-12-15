@@ -51,6 +51,14 @@ const stupidCommands: Command[] = [
     exec(dispatcher: StupidDispatcher, message: Message) {
       dispatcher.cobraKai(message)
     },
+  },
+  {
+    id: "!cj",
+    description: "Le dice a Cristopher que se ponga a jalar",
+    type: CommandType.STUPID,
+    exec(dispatcher: StupidDispatcher, message: Message) {
+      dispatcher.getToWorkCris(message)
+    },
   }
 ]
 
